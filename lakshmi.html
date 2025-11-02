@@ -30,14 +30,24 @@
     }
 
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, system-ui, -apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:40px 20px;display:block}
+    body{margin:0;font-family:Inter, system-ui, -apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:28px 16px;display:block}
+
+    :target{scroll-margin-top:88px}
+    h1,h2,section{scroll-margin-top:88px}
+
     .wrap{width:100%;max-width:1000px;margin:40px auto 120px}
 
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    header{flex-wrap:wrap}
+    header nav a{padding:8px 10px;border-radius:8px}
     .brand{display:flex;gap:14px;align-items:center}
     .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#08320a;font-weight:800}
     .brand h1{font-size:1rem;margin:0}
     header nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    /* Home button style */
+    .home-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#08320a;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,0.35)}
+    .home-btn:hover{opacity:0.95;transform:translateY(-1px)}
+
     /* skip link for keyboard users */
     .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip-link:focus{left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:#fff;color:#08320a;border-radius:6px;text-decoration:none;font-weight:700}
@@ -92,9 +102,15 @@
     footer{margin-top:18px;color:var(--muted);text-align:center}
 
     @media (max-width:860px){
-      .card{grid-template-columns:1fr;padding:20px}
+      .card{grid-template-columns:1fr;padding:18px}
       .avatar{width:180px;height:180px}
       .contact-me{display:block}
+      .wrap{margin:28px auto 80px}
+      footer{margin-top:28px}
+      /* stack header content on narrow screens */
+      header{flex-direction:column;align-items:center;gap:8px}
+      header .brand{justify-content:center}
+      header nav{width:100%;display:flex;justify-content:center}
     }
 
     /* small print-friendly rules */
@@ -117,7 +133,7 @@
         <div class="logo" aria-hidden="true"><img src="logo.jpg" alt="Sir Sivaswami Kalalaya logo" style="width:36px;height:36px;border-radius:8px;display:block"></div>
         <h1>9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</h1>
       </div>
-      <nav><a href="homepage.html">Home</a></nav>
+      <nav><a class="home-btn" href="homepage.html">Home</a></nav>
     </header>
 
     <main>
@@ -161,7 +177,7 @@
       })();
     </script>
 
-    <footer>© 2025 9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</footer>
+    <footer>© 2025 Sir Sivaswami Kalalaya Senior Secondary School — 9th 1M1B Active Impact Summit Delegation</footer>
   </div>
 </body>
 </html>

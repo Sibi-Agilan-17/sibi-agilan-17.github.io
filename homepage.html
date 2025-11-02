@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</title>
+
+  <title>Sir Sivaswami Kalalaya Senior Secondary School — 9th Active Impact Summit Delegation</title>
   <meta name="description" content="Sir Sivaswami Kalalaya School delegation at the 9th Active Impact Summit — student and teacher profiles, project summary and contact." />
   <link rel="icon" href="logo.jpg" type="image/jpeg">
-  <meta property="og:title" content="9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation" />
-  <meta property="og:description" content="Representing India at the 1M1B Active Impact Summit 2025, the Sir Sivaswami Kalalaya delegation contributes to the 1.5°C Challenge under SDG 2: Zero Hunger, focusing on climate-resilient agriculture, soil health, and sustainable animal husbandry." />
+  <meta property="og:title" content="Sir Sivaswami Kalalaya Senior Secondary School — 9th Active Impact Summit Delegation" />
+  <meta property="og:description" content="Representing India at the 1M1B Active Impact Summit 2025, Sir Sivaswami Kalalaya Senior Secondary School contributes to the 1.5°C Challenge under SDG 2: Zero Hunger, focusing on climate-resilient agriculture, soil health, and sustainable animal husbandry." />
   <meta property="og:image" content="banner.avif" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation" />
+  <meta property="og:site_name" content="Sir Sivaswami Kalalaya Senior Secondary School" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <style>
@@ -24,16 +25,31 @@
       --glass:rgba(255,255,255,0.04);
       --maxw:1100px;
     }
+
     *{box-sizing:border-box}
-    html,body{min-height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;background:linear-gradient(180deg,#06220f,#07130a);color:var(--text)}
+    html,body{min-height:100vh;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;background:linear-gradient(180deg,#06220f,#07130a);color:var(--text);-webkit-font-smoothing:antialiased}
+    /* improve text rendering and mobile touch targets */
+    a,button{ -webkit-tap-highlight-color: rgba(0,0,0,0.08)}
+    /* helpful for anchor links so sticky header doesn't cover content */
+    :target{scroll-margin-top:88px}
+    h2, h1, section{scroll-margin-top:88px}
 
     /* Header */
     header.site{position:sticky;top:0;background:rgba(7,19,10,0.55);backdrop-filter:blur(6px);z-index:40;border-bottom:1px solid rgba(255,255,255,0.02)}
     .container{max-width:var(--maxw);margin:0 auto;padding:18px}
     .site-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:flex;align-items:center;gap:12px}
+    /* allow the brand's text to shrink/wrap instead of forcing overflow */
+    .brand > div{min-width:0}
+    .school-title{font-weight:800;line-height:1;}
+    /* make sure long school name wraps on tiny screens and scales down if needed */
+    .school-title{white-space:normal;word-break:break-word;hyphens:auto;font-size:clamp(14px,1.9vw,18px)}
+    .muted-small{color:var(--muted);font-size:0.85rem}
     .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#08320a;font-weight:800}
     .logo img{width:36px;height:36px;border-radius:8px;display:block}
+
+    /* Make nav links easier to tap on mobile */
+    nav.top a{display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;border-radius:8px}
 
     /* Section headings and small lead under headings */
     .content h2{text-align:center;margin:0 0 10px 0}
@@ -43,18 +59,21 @@
     nav.top a{color:var(--muted);text-decoration:none;font-weight:600}
 
     /* Hero */
-    .hero{min-height:56vh;display:grid;align-items:center;padding:60px 20px;background-image:linear-gradient(180deg,rgba(2,10,6,0.45),rgba(2,10,6,0.45)), url('banner.avif');background-size:cover;background-position:center}
-    .hero-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-    .hero h1{font-size:clamp(28px,4vw,48px);margin:0;line-height:1.02}
-    .hero p.lead{color:var(--muted);margin-top:10px;font-size:1.05rem}
-    .cta-group{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{background:var(--accent);color:#08320a;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:800}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+    .hero{min-height:56vh;display:grid;align-items:center;padding:54px 20px;background-image:linear-gradient(180deg,rgba(2,10,6,0.45),rgba(2,10,6,0.45)), url('banner.avif');background-size:cover;background-position:center}
+     .hero-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+     .hero h1{font-size:clamp(28px,4vw,48px);margin:0;line-height:1.02}
+     .hero p.lead{color:var(--muted);margin-top:10px;font-size:1.05rem}
+     .cta-group{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+     .btn{background:var(--accent);color:#08320a;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:800}
+     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 
-    /* Right column - summary card */
-    .summary{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .summary h4{margin:0 0 8px 0}
-    .summary p{margin:0;color:var(--muted);line-height:1.45}
+    /* Make CTA full width on very small screens for easier tapping */
+    .btn{min-height:44px}
+
+     /* Right column - summary card */
+     .summary{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+     .summary h4{margin:0 0 8px 0}
+     .summary p{margin:0;color:var(--muted);line-height:1.45}
 
     /* Sections */
     section.content{max-width:var(--maxw);margin:36px auto;padding:0 20px}
@@ -70,7 +89,7 @@
     .delegate p{margin:3px 0 0 0;color:var(--muted);font-size:0.9rem}
     .delegate a{color:var(--text);text-decoration:none}
 
-    footer.site{margin-top:40px;padding:28px 20px;background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.55));color:var(--muted)}
+    footer.site{margin-top:40px;padding:18px 20px;background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.55));color:var(--muted)}
 
     /* small improvements: center project panels and make them responsive */
     /* Center the specific project grid inside .content and limit its width for nicer alignment with the hero */
@@ -80,9 +99,38 @@
     footer.site .container{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 
     /* Responsive */
-    @media (max-width:960px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{padding:40px 12px}}
-    @media (max-width:560px){.hero{min-height:48vh}.delegate{flex-direction:row;align-items:center}}
-    @media (max-width:640px){footer.site .container{justify-content:center;text-align:center}}
+    @media (max-width:960px){
+      .hero-inner{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .hero{padding:36px 16px}
+      .summary{order:2}
+      /* Increase spacing and hit areas for nav on tablets */
+      nav.top a{padding:10px 12px}
+    }
+    @media (max-width:560px){
+      /* Stack header on narrow screens so school name doesn't get cut off */
+      .site-inner{flex-direction:column;align-items:center;gap:8px}
+      .brand{justify-content:center;gap:8px}
+      nav.top{width:100%;display:flex;justify-content:center;gap:12px}
+      .school-title{font-size:1rem;text-align:center;white-space:normal}
+      /* slightly reduce logo on very small screens so the text has room */
+      .logo{width:40px;height:40px}
+      .logo img{width:28px;height:28px}
+      /* ensure brand text centers inside the brand box */
+      .brand > div{display:flex;flex-direction:column;align-items:center}
+      .muted-small{text-align:center}
+      .hero{min-height:40vh;padding:26px 12px}
+      .delegate{flex-direction:row;align-items:center}
+      .delegate img{width:64px;height:64px}
+      .hero h1{font-size:clamp(22px,6vw,34px)}
+      .cta-group{flex-direction:column;align-items:stretch}
+      .cta-group .btn{width:100%;text-align:center}
+    }
+    @media (max-width:640px){
+      /* small adjustments for slightly larger phones */
+      .muted-small{font-size:0.82rem}
+      .hero-inner{gap:18px}
+    }
 
     /* small accessibility focus */
     a:focus{outline:3px solid rgba(165,214,167,0.22);outline-offset:3px}
@@ -92,81 +140,79 @@
   <header class="site">
     <div class="container">
       <div class="site-inner">
-        <div class="brand">
-        <div class="logo" aria-hidden="true"><img src="logo.jpg" alt="Sir Sivaswami Kalalaya logo"></div>
-          <div>
-            <div style="font-weight:800">9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</div>
-            <div class="muted-small">9th Active Impact Summit — Geneva</div>
+        <a href="https://www.sirsivaswamikalalaya.org/" class="brand" target="_blank" rel="noopener noreferrer">
+          <div class="logo" aria-hidden="true">
+            <img src="logo.jpg" alt="School logo">
           </div>
-        </div>
-        <nav class="top" aria-label="Main navigation">
-          <a href="homepage.html">Home</a>
-          <a href="homepage.html#delegation">Delegates</a>
-          <a href="mailto:lakshmi_g@sirsivaswamikalalaya.org">Contact</a>
+          <div>
+            <h1 class="school-title">Sir Sivaswami Kalalaya Senior Secondary School</h1>
+            <p class="muted-small">Delegation for the 9th 1M1B Active Impact Summit</p>
+          </div>
+        </a>
+        <nav class="top" aria-label="Top navigation">
+          <a href="#projects">About</a>
+          <a href="#delegates">Delegates</a>
+          <a href="#projects">Projects</a>
+          <a href="https://www.activate1m1b.org/" target="_blank" rel="noopener noreferrer">1M1B</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero" role="banner" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div>
-          <h1 id="hero-title">Sir Sivaswami Kalalaya — Delegation at the 9th Active Impact Summit</h1>
-          <p class="lead">Representing India at the <b>1M1B Active Impact Summit 2025</b>, the <b>Sir Sivaswami Kalalaya delegation</b> contributes to the <b>1.5°C Challenge</b> under <b>SDG 2: Zero Hunger</b>, focusing on <i>climate-resilient agriculture</i>, <i>soil health</i>, and <i>sustainable animal husbandry</i>.</p>
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>Welcome to Our Delegation Page</h1>
+        <p class="lead">We are proud to represent Sir Sivaswami Kalalaya Senior Secondary School at the 9th Active Impact Summit.</p>
+        <div class="cta-group">
+          <a href="#delegates" class="btn">Meet Our Delegates</a>
+          <a href="#projects" class="btn ghost">View Our Projects</a>
+        </div>
+      </div>
+      <!-- banner image removed (hero uses background image) -->
+    </div>
+  </div>
 
-          <p class="lead">    Our project, <strong>“Climate Change and Its Impact on Agriculture, Soils, and Animal Husbandry,”</strong>
-    explores how temperature rise and erratic weather affect crop yield, livestock health, and soil ecosystems —
-    and how innovation and community awareness can build resilience at the local level.
-</p>
-          <div class="cta-group">
-            <a class="btn" href="homepage.html#project">Project</a>
-            <a class="btn ghost" href="homepage.html#delegation">Meet the Delegation</a>
-          </div>
+  <main>
+    <section id="projects" class="content">
+      <div class="grid">
+        <div class="panel">
+          <h3>About Our Project</h3>
+          <p class="lead">
+            <strong>“Climate Change and Its Impact on Agriculture, Soils, and Animal Husbandry”</strong> examines how rising temperatures and erratic weather patterns affect farming systems, soils, and livestock — and what communities can do to adapt.
+          </p>
+          <ul style="margin:8px 0 0 18px;color:var(--muted);line-height:1.6">
+            <li><strong>Crop yields:</strong> altered growing seasons, heat stress and yield variability.</li>
+            <li><strong>Soil health:</strong> increased erosion, loss of organic matter, and changing nutrient cycles.</li>
+            <li><strong>Livestock well‑being:</strong> heat-related stress, disease vulnerability, and productivity impacts.</li>
+          </ul>
+          <p style="margin-top:12px;">
+            The delegation focuses on developing practical, community-driven strategies to build resilience in local farming systems under the <strong>1.5°C Challenge</strong> and <strong>SDG 2: Zero Hunger</strong>.
+          </p>
         </div>
 
-        <aside class="summary" aria-label="Delegation summary">
-          <h4>Event</h4>
-          <p>9th Active Impact Summit — Geneva, Switzerland<br><strong>7th November, 2025</strong></p>
-          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
-          <h4>Delegation</h4>
-          <p><strong>Sir Sivaswami Kalalaya Senior Secondary School</strong><br>4 student delegates + 1 mentor</p>
-        </aside>
+        <div class="panel">
+          <h3>Our 3-D Solution: Develop, Drive, Digitise</h3>
+          <ul style="margin:8px 0 0 18px;color:var(--muted)">
+            <li><strong>Develop — </strong>Strengthen soil fertility and farm productivity through regenerative and sustainable practices.</li><br>
+            <li><strong>Drive — </strong>Empower youth and farmers through workshops, outreach, and field demonstrations on climate-smart methods.</li><br>
+            <li><strong>Digitise — </strong>Use data and digital tools to monitor soil health, track climate impacts, and share knowledge widely.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Get Involved</h3>
+          <p style="color:var(--muted)">
+            Collaborate with our delegation to advance sustainable agriculture and youth-led climate action.
+            Invite our team for a session, partner on community projects, or support our continuing research.
+          </p><br>
+          <p><a class="btn" href="mailto:lakshmi_g@sirsivaswamikalalaya.org">Contact Delegation</a></p>
+        </div>
       </div>
     </section>
 
-<section id="project" class="content">
-  <div class="grid">
-    <div class="panel">
-      <h3>About Our Project</h3>
-      <p>
-        <strong>“Climate Change and Its Impact on Agriculture, Soils, and Animal Husbandry”</strong> explores how rising temperatures and erratic weather patterns affect crop yields, soil health, and livestock well-being.
-        The delegation focuses on developing practical, community-driven strategies to build resilience in local farming systems under the <strong>1.5°C Challenge</strong> and <strong>SDG 2: Zero Hunger</strong>.
-      </p>
-    </div>
 
-    <div class="panel">
-      <h3>Our 3-D Solution: Develop, Drive, Digitise</h3>
-      <ul style="margin:8px 0 0 18px;color:var(--muted)">
-        <li><strong>Develop — </strong>Strengthen soil fertility and farm productivity through regenerative and sustainable practices.</li>
-        <li><strong>Drive — </strong>Empower youth and farmers through workshops, outreach, and field demonstrations on climate-smart methods.</li>
-        <li><strong>Digitise — </strong>Use data and digital tools to monitor soil health, track climate impacts, and share knowledge widely.</li>
-      </ul>
-    </div>
-
-    <div class="panel">
-      <h3>Get Involved</h3>
-      <p style="color:var(--muted)">
-        Collaborate with our delegation to advance sustainable agriculture and youth-led climate action.
-        Invite our team for a session, partner on community projects, or support our continuing research.
-      </p>
-      <p><a class="btn" href="mailto:lakshmi_g@sirsivaswamikalalaya.org">Contact Delegation</a></p>
-    </div>
-  </div>
-</section>
-
-
-    <section id="delegation" class="content">
+    <section id="delegates" class="content">
       <h2>Meet Our Delegation</h2>
       <p class="sublead">Click a profile to view the delegate's page.</p>
 
@@ -205,27 +251,27 @@
 
         <a class="delegate" href="harshitha.html">
           <img src="harshitha.jpg" alt="Harshitha">
-          <div>
-            <h4>Harshitha Vinoth</h4>
-            <p>Student Delegate</p>
-          </div>
-        </a>
-      </div>
+           <div>
+             <h4>Harshitha Vinoth</h4>
+             <p>Student Delegate</p>
+           </div>
+         </a>
+       </div>
     </section>
   </main>
 
   <footer class="site">
     <div class="container">
-      <div>© 2025 9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</div>
+      <div>© 2025 Sir Sivaswami Kalalaya Senior Secondary School — 9th 1M1B Active Impact Summit Delegation</div>
       <div class="muted-small"><a class="footer-link" href="mailto:lakshmi_g@sirsivaswamikalalaya.org">Contact us</a></div>
     </div>
-   </footer>
+  </footer>
 
-   <script>
-    // small script to ensure internal nav anchors scroll smoothly
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{e.preventDefault();const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
-    });
+  <script>
+   // small script to ensure internal nav anchors scroll smoothly
+   document.querySelectorAll('a[href^="#"]').forEach(a=>{
+     a.addEventListener('click',e=>{e.preventDefault();const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
+   });
   </script>
 </body>
 </html>

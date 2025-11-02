@@ -20,17 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg-1: #07130a;
-      --bg-2: #0a2611;
-      --card: rgba(255,255,255,0.03);
-      --glass: rgba(255,255,255,0.04);
-      --accent: #2e7d32;
-      --accent-2: #a5d6a7;
-      --muted: #9fbda1;
-      --text: #eef7ee;
-      --radius: 14px;
-      --linkedin:#0A66C2;
-      --instagram:#E1306C;
+      --bg-1:#07130a;--bg-2:#0a2611;--card:rgba(255,255,255,0.03);--glass:rgba(255,255,255,0.04);--accent:#2e7d32;--accent-2:#a5d6a7;--muted:#9fbda1;--text:#eef7ee;--radius:14px;--linkedin:#0A66C2;--instagram:#E1306C;
     }
 
     *{box-sizing:border-box}
@@ -42,40 +32,35 @@
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      padding:40px 20px;
+      padding:28px 16px;
       display:block;
     }
+
+    :target{scroll-margin-top:88px}
+    h1,h2,section{scroll-margin-top:88px}
 
     .wrap{width:100%;max-width:1000px;margin:40px auto 120px}
 
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    header{flex-wrap:wrap}
+    header nav a{padding:8px 10px;border-radius:8px}
     .brand{display:flex;gap:14px;align-items:center}
     .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#08320a;font-weight:800}
     .brand h1{font-size:1rem;margin:0}
     header nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    /* Home button style */
+    .home-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#08320a;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,0.35)}
+    .home-btn:hover{opacity:0.95;transform:translateY(-1px)}
+
     /* skip link for keyboard users */
     .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip-link:focus{left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:#fff;color:#08320a;border-radius:6px;text-decoration:none;font-weight:700}
 
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:var(--radius);
-      padding:28px;
-      display:grid;
-      grid-template-columns:280px 1fr;
-      gap:28px;
-      align-items:start;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.6);
-      border:1px solid rgba(255,255,255,0.02);
-      backdrop-filter: blur(6px);
-      transform:translateY(0);opacity:1;transition:transform .28s cubic-bezier(.2,.9,.3,1),opacity .28s ease;
-    }
+    .card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start;box-shadow: 0 18px 50px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02);backdrop-filter: blur(6px);transform:translateY(0);opacity:1;transition:transform .28s cubic-bezier(.2,.9,.3,1),opacity .28s ease;}
 
     /* Photo column */
     .photo{display:flex;flex-direction:column;align-items:center}
-    .avatar{
-      width:220px;height:220px;border-radius:18px;overflow:hidden;display:block;border:6px solid rgba(255,255,255,0.04);box-shadow:0 20px 40px rgba(0,0,0,0.6);position:relative;
-    }
+    .avatar{width:220px;height:220px;border-radius:18px;overflow:hidden;display:block;border:6px solid rgba(255,255,255,0.04);box-shadow:0 20px 40px rgba(0,0,0,0.6);position:relative;}
     /* subtle glowing ring behind avatar */
     .avatar::after{content:"";position:absolute;left:-6px;top:-6px;right:-6px;bottom:-6px;border-radius:20px;background:linear-gradient(90deg,var(--accent),var(--accent-2));filter:blur(10px);opacity:0.10;pointer-events:none}
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
@@ -95,10 +80,6 @@
     .icon-btn:hover{transform:translateY(-4px);background:rgba(255,255,255,0.03)}
     .icon-btn:focus{outline:3px solid rgba(165,214,167,0.18);outline-offset:3px}
     .icon svg{width:18px;height:18px;display:block}
-    /* platform accents */
-    .icon-btn.linkedin:hover{background:linear-gradient(90deg, rgba(10,102,194,0.12), rgba(10,102,194,0.04))}
-    .icon-btn.instagram:hover{background:linear-gradient(90deg, rgba(225,48,108,0.12), rgba(225,48,108,0.04))}
-
 
     /* logo hover */
     .logo{transition:transform .12s ease}
@@ -107,10 +88,14 @@
     footer{margin-top:18px;color:var(--muted);text-align:center}
 
     @media (max-width:860px){
-      .card{grid-template-columns:1fr;padding:20px}
+      .card{grid-template-columns:1fr;padding:18px}
       .avatar{width:180px;height:180px}
       .contact-me{display:block}
-    }
+      /* stack header content on narrow screens */
+      header{flex-direction:column;align-items:center;gap:8px}
+      header .brand{justify-content:center}
+      header nav{width:100%;display:flex;justify-content:center}
+     }
 
     /* small print-friendly rules */
     @media print{
@@ -132,7 +117,7 @@
         <div class="logo" aria-hidden="true"><img src="logo.jpg" alt="Sir Sivaswami Kalalaya logo" style="width:36px;height:36px;border-radius:8px;display:block"></div>
         <h1>9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</h1>
       </div>
-      <nav><a href="homepage.html">Home</a></nav>
+      <nav><a class="home-btn" href="homepage.html">Home</a></nav>
     </header>
 
     <main>
@@ -164,13 +149,6 @@
 
 
 
-
-
-
-
-
-
-
           <div class="socials" role="navigation" aria-label="social links">
             <a class="icon-btn instagram" href="https://instagram.com/ananthan_k2008" target="_blank" rel="noopener noreferrer">
               <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.6.6.3 1 .7 1.3 1.3.3.5.5 1.3.6 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.6 2.5-.3.6-.7 1-1.3 1.3-.5.3-1.3.5-2.5.6-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.6-.6-.3-1-.7-1.3-1.3-.3-.5-.5-1.3-.6-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .6-2.5.3-.6.7-1 1.3-1.3.5-.3 1.3-.5 2.5-.6C8.4 2.2 8.8 2.2 12 2.2zm0 2.1c-3.1 0-3.4 0-4.6.1-.9.1-1.4.2-1.8.4-.4.2-.7.5-.9.9-.2.4-.3.9-.4 1.8-.1 1.2-.1 1.5-.1 4.6s0 3.4.1 4.6c.1.9.2 1.4.4 1.8.2.4.5.7.9.9.4.2.9.3 1.8.4 1.2.1 1.5.1 4.6.1s3.4 0 4.6-.1c.9-.1 1.4-.2 1.8-.4.4-.2.7-.5.9-.9.2-.4.3-.9.4-1.8.1-1.2.1-1.5.1-4.6s0-3.4-.1-4.6c-.1-.9-.2-1.4-.4-1.8-.2-.4-.5-.7-.9-.9-.4-.2-.9-.3-1.8-.4C15.4 4.2 15.1 4.2 12 4.2zM12 7.4A4.6 4.6 0 1 1 7.4 12 4.6 4.6 0 0 1 12 7.4zm0 1.9a2.7 2.7 0 1 0 2.7 2.7A2.7 2.7 0 0 0 12 9.3zm5-3.3a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/></svg></span>
@@ -189,7 +167,7 @@
       })();
     </script>
 
-    <footer>© 2025 9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</footer>
+    <footer>© 2025 Sir Sivaswami Kalalaya Senior Secondary School — 9th 1M1B Active Impact Summit Delegation</footer>
   </div>
 </body>
 </html>

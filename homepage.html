@@ -6,8 +6,8 @@
   <title>9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</title>
   <meta name="description" content="Sir Sivaswami Kalalaya School delegation at the 9th Active Impact Summit — student and teacher profiles, project summary and contact." />
   <link rel="icon" href="logo.jpg" type="image/jpeg">
-  <meta property="og:title" content="Sir Sivaswami Kalalaya — Delegation at the 9th Active Impact Summit" />
-  <meta property="og:description" content="Our students and mentor present research and community projects on climate-resilient agriculture and youth-led sustainability initiatives at the 9th Active Impact Summit." />
+  <meta property="og:title" content="9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation" />
+  <meta property="og:description" content="Representing India at the 1M1B Active Impact Summit 2025, the Sir Sivaswami Kalalaya delegation contributes to the 1.5°C Challenge under SDG 2: Zero Hunger, focusing on climate-resilient agriculture, soil health, and sustainable animal husbandry." />
   <meta property="og:image" content="banner.avif" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation" />
@@ -25,7 +25,7 @@
       --maxw:1100px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;background:linear-gradient(180deg,#06220f,#07130a);color:var(--text)}
+    html,body{min-height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;background:linear-gradient(180deg,#06220f,#07130a);color:var(--text)}
 
     /* Header */
     header.site{position:sticky;top:0;background:rgba(7,19,10,0.55);backdrop-filter:blur(6px);z-index:40;border-bottom:1px solid rgba(255,255,255,0.02)}
@@ -33,6 +33,12 @@
     .site-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#08320a;font-weight:800}
+    .logo img{width:36px;height:36px;border-radius:8px;display:block}
+
+    /* Section headings and small lead under headings */
+    .content h2{text-align:center;margin:0 0 10px 0}
+    .content p.sublead{text-align:center;color:var(--muted);margin:6px 0 18px 0}
+
     nav.top{display:flex;gap:14px;align-items:center}
     nav.top a{color:var(--muted);text-decoration:none;font-weight:600}
 
@@ -66,9 +72,17 @@
 
     footer.site{margin-top:40px;padding:28px 20px;background:linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.55));color:var(--muted)}
 
+    /* small improvements: center project panels and make them responsive */
+    /* Center the specific project grid inside .content and limit its width for nicer alignment with the hero */
+    section#project .grid{max-width:920px;margin:0 auto;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start}
+
+    /* Move inline footer layout into CSS for consistency */
+    footer.site .container{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
     /* Responsive */
     @media (max-width:960px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{padding:40px 12px}}
     @media (max-width:560px){.hero{min-height:48vh}.delegate{flex-direction:row;align-items:center}}
+    @media (max-width:640px){footer.site .container{justify-content:center;text-align:center}}
 
     /* small accessibility focus */
     a:focus{outline:3px solid rgba(165,214,167,0.22);outline-offset:3px}
@@ -79,16 +93,16 @@
     <div class="container">
       <div class="site-inner">
         <div class="brand">
-        <div class="logo" aria-hidden="true"><img src="logo.jpg" alt="Sir Sivaswami Kalalaya logo" style="width:36px;height:36px;border-radius:8px;display:block"></div>
+        <div class="logo" aria-hidden="true"><img src="logo.jpg" alt="Sir Sivaswami Kalalaya logo"></div>
           <div>
             <div style="font-weight:800">9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</div>
-            <div style="font-size:12px;color:var(--muted);">9th Active Impact Summit — Geneva</div>
+            <div class="muted-small">9th Active Impact Summit — Geneva</div>
           </div>
         </div>
         <nav class="top" aria-label="Main navigation">
           <a href="homepage.html">Home</a>
-          <a href="sibi.html">Delegates</a>
-          <a href="mailto:info@example.com">Contact</a>
+          <a href="homepage.html#delegation">Delegates</a>
+          <a href="mailto:lakshmi_g@sirsivaswamikalalaya.org">Contact</a>
         </nav>
       </div>
     </div>
@@ -99,7 +113,12 @@
       <div class="hero-inner">
         <div>
           <h1 id="hero-title">Sir Sivaswami Kalalaya — Delegation at the 9th Active Impact Summit</h1>
-          <p class="lead">Our students and mentor present research and community projects on climate-resilient agriculture and youth-led sustainability initiatives. Explore delegate profiles, project highlights, and contact details.</p>
+          <p class="lead">Representing India at the <b>1M1B Active Impact Summit 2025</b>, the <b>Sir Sivaswami Kalalaya delegation</b> contributes to the <b>1.5°C Challenge</b> under <b>SDG 2: Zero Hunger</b>, focusing on <i>climate-resilient agriculture</i>, <i>soil health</i>, and <i>sustainable animal husbandry</i>.</p>
+
+          <p class="lead">    Our project, <strong>“Climate Change and Its Impact on Agriculture, Soils, and Animal Husbandry,”</strong>
+    explores how temperature rise and erratic weather affect crop yield, livestock health, and soil ecosystems —
+    and how innovation and community awareness can build resilience at the local level.
+</p>
           <div class="cta-group">
             <a class="btn" href="homepage.html#project">Project</a>
             <a class="btn ghost" href="homepage.html#delegation">Meet the Delegation</a>
@@ -108,7 +127,7 @@
 
         <aside class="summary" aria-label="Delegation summary">
           <h4>Event</h4>
-          <p>9th Active Impact Summit — Geneva, Switzerland<br><strong>June 2025</strong></p>
+          <p>9th Active Impact Summit — Geneva, Switzerland<br><strong>7th November, 2025</strong></p>
           <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
           <h4>Delegation</h4>
           <p><strong>Sir Sivaswami Kalalaya Senior Secondary School</strong><br>4 student delegates + 1 mentor</p>
@@ -116,33 +135,40 @@
       </div>
     </section>
 
-    <section id="project" class="content">
-      <div class="grid">
-        <div class="panel">
-          <h3>About Our Project</h3>
-          <p>"Climate Change and Its Impact on Agriculture and Soil Health" — the delegation researches how changing weather patterns affect local crop yields and soil resilience. We combine field observations, low-cost experiments, and community workshops.</p>
-        </div>
+<section id="project" class="content">
+  <div class="grid">
+    <div class="panel">
+      <h3>About Our Project</h3>
+      <p>
+        <strong>“Climate Change and Its Impact on Agriculture, Soils, and Animal Husbandry”</strong> explores how rising temperatures and erratic weather patterns affect crop yields, soil health, and livestock well-being.
+        The delegation focuses on developing practical, community-driven strategies to build resilience in local farming systems under the <strong>1.5°C Challenge</strong> and <strong>SDG 2: Zero Hunger</strong>.
+      </p>
+    </div>
 
-        <div class="panel">
-          <h3>What We Present</h3>
-          <ul style="margin:8px 0 0 18px;color:var(--muted)">
-            <li>Field trial results on soil amendments</li>
-            <li>Youth-led outreach and curriculum</li>
-            <li>Recommendations for climate-smart practices</li>
-          </ul>
-        </div>
+    <div class="panel">
+      <h3>Our 3-D Solution: Develop, Drive, Digitise</h3>
+      <ul style="margin:8px 0 0 18px;color:var(--muted)">
+        <li><strong>Develop — </strong>Strengthen soil fertility and farm productivity through regenerative and sustainable practices.</li>
+        <li><strong>Drive — </strong>Empower youth and farmers through workshops, outreach, and field demonstrations on climate-smart methods.</li>
+        <li><strong>Digitise — </strong>Use data and digital tools to monitor soil health, track climate impacts, and share knowledge widely.</li>
+      </ul>
+    </div>
 
-        <div class="panel">
-          <h3>Get Involved</h3>
-          <p style="color:var(--muted)">Contact the delegation to collaborate, invite our team for a talk, or support youth climate action initiatives.</p>
-          <p><a class="btn" href="mailto:info@example.com">Contact Delegation</a></p>
-        </div>
-      </div>
-    </section>
+    <div class="panel">
+      <h3>Get Involved</h3>
+      <p style="color:var(--muted)">
+        Collaborate with our delegation to advance sustainable agriculture and youth-led climate action.
+        Invite our team for a session, partner on community projects, or support our continuing research.
+      </p>
+      <p><a class="btn" href="mailto:lakshmi_g@sirsivaswamikalalaya.org">Contact Delegation</a></p>
+    </div>
+  </div>
+</section>
+
 
     <section id="delegation" class="content">
-      <h2 style="text-align:center;margin:0 0 10px 0">Meet Our Delegation</h2>
-      <p style="text-align:center;color:var(--muted);margin:6px 0 18px 0">Click a profile to view the delegate's page.</p>
+      <h2>Meet Our Delegation</h2>
+      <p class="sublead">Click a profile to view the delegate's page.</p>
 
       <div class="delegates container">
         <a class="delegate" href="lakshmi.html">
@@ -189,13 +215,13 @@
   </main>
 
   <footer class="site">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div class="container">
       <div>© 2025 9th Active Impact Summit - Sir Sivaswami Kalalaya Senior Secondary School Delegation</div>
-      <div style="color:var(--muted)"><a href="mailto:lakshmi_g@sirsivaswamikalalaya.org" style="color:var(--muted);text-decoration:underline">Contact us</a></div>
+      <div class="muted-small"><a class="footer-link" href="mailto:lakshmi_g@sirsivaswamikalalaya.org">Contact us</a></div>
     </div>
-  </footer>
+   </footer>
 
-  <script>
+   <script>
     // small script to ensure internal nav anchors scroll smoothly
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{e.preventDefault();const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});

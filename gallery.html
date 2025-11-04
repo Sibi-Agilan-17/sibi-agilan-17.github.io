@@ -90,32 +90,52 @@
 
    <script>
     (function(){
+      // categories to populate
       const categories = [
         {id: 'prog', folder: 'assets/prog/', gridId: 'grid-prog'},
         {id: 'farm', folder: 'assets/farm/', gridId: 'grid-farm'}
       ];
 
-      const exts = ['.jpg','.jpeg','.png','.webp','.avif'];
-      const maxIndex = 60;
-      const consecutiveMissLimit = 6;
-
-      function makeCard(src, name){
-        const card = document.createElement('div'); card.className='card';
-        const img = document.createElement('img'); img.src = src; img.alt = name || '';
-        img.loading = 'lazy';
-        img.onerror = ()=>{ img.style.opacity='0.38'; img.alt = '(missing) ' + (name||src); };
-        card.appendChild(img);
-        card.addEventListener('click', ()=> openLightbox(src, name));
-        return card;
-      }
-
-      function testImage(url){
-        return new Promise(resolve=>{
-          const img = new Image();
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-          img.src = url;
+      // create a single IntersectionObserver for lazy-loading thumbnails
+      const thumbObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if(!entry.isIntersecting) return;
+          const img = entry.target;
+          const src = img.dataset.src;
+          if(src){ img.src = src; img.removeAttribute('data-src'); }
+          obs.unobserve(img);
         });
+      }, {rootMargin: '200px 0px'}); // preload before it scrolls into view
+
+      // Lightbox helpers
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      function openLightbox(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lightbox.style.display='flex'; lightbox.setAttribute('aria-hidden','false'); }
+      function closeLightbox(){ lightbox.style.display='none'; lightbox.setAttribute('aria-hidden','true'); lbImg.src=''; }
+      lightbox.addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+
+      function makeCard(entry, folder){
+        // entry can be a string (filename) or object {name, thumb}
+        const fullname = (typeof entry === 'string') ? entry : entry.name;
+        const thumb = (typeof entry === 'string') ? null : entry.thumb;
+
+        const card = document.createElement('div'); card.className='card';
+        const img = document.createElement('img');
+        img.alt = fullname || '';
+        img.loading = 'lazy';
+        img.style.cursor = 'zoom-in';
+
+        // use data-src so we can lazy load via IntersectionObserver
+        if(thumb){ img.dataset.src = folder + thumb; }
+        else { img.dataset.src = folder + fullname; }
+
+        // clicking opens the full image in lightbox
+        card.addEventListener('click', ()=> openLightbox(folder + fullname, fullname));
+        card.appendChild(img);
+        // observe the img for lazy load
+        thumbObserver.observe(img);
+        return card;
       }
 
       async function fetchIndex(folder){
@@ -125,52 +145,40 @@
           if(!res.ok) return null;
           const data = await res.json();
           if(Array.isArray(data) && data.length>0) return data;
-        }catch(e){ /* ignore */ }
+        }catch(e){ /* ignore network error */ }
         return null;
-      }
-
-      async function numericScan(folder, grid){
-        let found = 0; let consecutiveMisses = 0;
-        for(let i=1;i<=maxIndex && consecutiveMisses < consecutiveMissLimit;i++){
-          let any = false;
-          for(const ext of exts){
-            const path = folder + i + ext;
-            const ok = await testImage(path) || await testImage('./' + path);
-            if(ok){ grid.appendChild(makeCard(path, i+ext)); found++; any = true; }
-          }
-          if(!any) consecutiveMisses++; else consecutiveMisses=0;
-        }
-        return found;
       }
 
       async function buildGrid(cat){
         const grid = document.getElementById(cat.gridId);
         grid.innerHTML = '';
 
-        // 1) try index.json
+        // 1) try index.json (expects array of strings OR objects {name, thumb})
         const list = await fetchIndex(cat.folder);
         if(list && list.length>0){
-          list.forEach(name=>{ const src = cat.folder + name; grid.appendChild(makeCard(src, name)); });
+          list.forEach(item => grid.appendChild(makeCard(item, cat.folder)));
           return;
         }
 
-        // 2) fall back to numeric scan
-        const found = await numericScan(cat.folder, grid);
-        if(found>0) return;
-
-        // 3) nothing found
-        const msg = document.createElement('div'); msg.textContent = 'No images found in ' + cat.folder + ' (add index.json or drop images named 1.jpg,2.jpg,...).'; msg.style.color='var(--muted)'; msg.style.textAlign='center'; grid.appendChild(msg);
+        // 2) fallback: scan numerically (fast synchronous approach)
+        // try a small range to avoid long blocking scans
+        const exts = ['.jpg','.jpeg','.png','.webp','.avif'];
+        const maxTry = 60; // upper bound
+        let found = 0;
+        for(let i=1;i<=maxTry;i++){
+          for(const ext of exts){
+            // create a card using a guessed filename (let the browser handle 404s)
+            // this keeps UI responsive instead of awaiting many network requests
+            grid.appendChild(makeCard(String(i + ext), cat.folder));
+            found++;
+          }
+        }
+        if(found===0){
+          const msg = document.createElement('div'); msg.textContent = 'No images found in ' + cat.folder + ' (add index.json or drop images named 1.jpg,2.jpg,...).'; msg.style.color='var(--muted)'; msg.style.textAlign='center'; grid.appendChild(msg);
+        }
       }
 
-      // Lightbox
-      const lightbox = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightbox-img');
-      function openLightbox(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lightbox.style.display='flex'; lightbox.setAttribute('aria-hidden','false'); }
-      function closeLightbox(){ lightbox.style.display='none'; lightbox.setAttribute('aria-hidden','true'); lbImg.src=''; }
-      lightbox.addEventListener('click', closeLightbox);
-      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
-
-      // populate categories in parallel
+      // kick off building grids
       categories.forEach(c => buildGrid(c));
     })();
    </script>
